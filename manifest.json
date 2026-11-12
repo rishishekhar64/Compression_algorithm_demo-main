@@ -1,0 +1,601 @@
+{
+  "demo_version": "combined",
+  "base_code": "Verified V4 educational five-codec implementation",
+  "scales": [
+    "Standard",
+    "5x",
+    "10x"
+  ],
+  "source_manifests": [
+    "manifest_standard.json",
+    "manifest_5x.json",
+    "manifest.json"
+  ],
+  "scale_details": [
+    {
+      "demo_version": "1.0",
+      "new_500KiB_source_modules": null,
+      "scale": "Standard"
+    },
+    {
+      "demo_version": "1.1",
+      "methodology": "Long runs contain 25k A + 25k B. DNA, Python source and random bytes are exact half-length prefixes of the existing 10x datasets; original Standard and 10x files are unchanged.",
+      "scale": "5x"
+    },
+    {
+      "demo_version": "1.0",
+      "new_500KiB_source_modules": [
+        {
+          "module": "ast.py",
+          "bytes_used": 65389,
+          "module_sha256": "7514eb7df98b1b76eab160ca2a83e6e9a9f3219a4659808cd9fd278b524ede1b"
+        },
+        {
+          "module": "argparse.py",
+          "bytes_used": 102113,
+          "module_sha256": "536e65df75b5dae9d11d0fec05cb1faee86b41cf9fba4e7f2c3f54dbd7405488"
+        },
+        {
+          "module": "inspect.py",
+          "bytes_used": 128330,
+          "module_sha256": "d5ac7f91f6906439fd57f87f1e37934e95bb40569fa0a26affa4cf618f67532a"
+        },
+        {
+          "module": "typing.py",
+          "bytes_used": 132771,
+          "module_sha256": "b73770ed2e40b88c864efb79ed1bfd1ebdc9337ff832b3ee612ab9d7a417532e"
+        },
+        {
+          "module": "tokenize.py",
+          "bytes_used": 21623,
+          "module_sha256": "1369f7f9e57c722d1627333b705aabfaf943c24680920942e773fd4e1776be2e"
+        },
+        {
+          "module": "textwrap.py",
+          "bytes_used": 19994,
+          "module_sha256": "26836f5c17cdb4ffdeaff1a5146ed61a262aa410bdf3ad204e2bd0792f010d5e"
+        },
+        {
+          "module": "collections/__init__.py",
+          "bytes_used": 41780,
+          "module_sha256": "2347f647577b6c11b82fc48fa4a1744f7af1af87f15942f92b7cc4410f0a817b"
+        }
+      ],
+      "scale": "10x"
+    }
+  ],
+  "datasets": [
+    {
+      "name": "Long runs (10 KB)",
+      "original_file": "original/long_runs_10KB.txt",
+      "original_bytes": 10000,
+      "original_sha256": "80b6a007d760c2cd84f6026cda12ed1731e176756069f72e408b0c9e9de406ba",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/long_runs_10KB.fl01",
+          "packet_bytes": 1263,
+          "packet_sha256": "b886d26fc08bcdd54576dc7512057aad6f4b71746ca11500d8ec696e1044fa4d",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/long_runs_10KB.rl02",
+          "packet_bytes": 158,
+          "packet_sha256": "49e8d25f76233d7d80d8e360e649a2bd6b12c721d853e82167b4d68e07abd1c6",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/long_runs_10KB.hf03",
+          "packet_bytes": 1261,
+          "packet_sha256": "eb610e268f4a33f9fd6042082cf5fd62138bcfb310ee08c0e5b187d1851c579b",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/long_runs_10KB.hc04",
+          "packet_bytes": 1264,
+          "packet_sha256": "3fb5f80618b7efd32048895f25563f7affc70cf92d8ec11738754240d7633a13",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/long_runs_10KB.lz05",
+          "packet_bytes": 148,
+          "packet_sha256": "628e42e625fec7fa8e99b83f349722434ee635ba10243c3603b32ad51dbab582",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "Standard"
+    },
+    {
+      "name": "Skewed DNA (12 KB)",
+      "original_file": "original/skewed_DNA_12KB.txt",
+      "original_bytes": 12000,
+      "original_sha256": "acad6c88a5a3a04e4e7edb3043da5e17eef159a179ef3f748e0c68582eb3fe64",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/skewed_DNA_12KB.fl01",
+          "packet_bytes": 3015,
+          "packet_sha256": "fa58f930827b263cd194661b2a0295dc668722eac0907c1acd7172d94f36e784",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/skewed_DNA_12KB.rl02",
+          "packet_bytes": 10765,
+          "packet_sha256": "45f6ea9d0a0f36e845c8bf3c17e805731039d718f858c54547cb8e783d11fdae",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/skewed_DNA_12KB.hf03",
+          "packet_bytes": 2259,
+          "packet_sha256": "837d9df3076aa124b54fd18ef2866343729e5e0ad3bdf2922b985e679d5a1c80",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/skewed_DNA_12KB.hc04",
+          "packet_bytes": 2264,
+          "packet_sha256": "5f8a9db52f38ae68264e92c65e595f24838047d7350730255e1520d81e021416",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/skewed_DNA_12KB.lz05",
+          "packet_bytes": 5252,
+          "packet_sha256": "172a331d9ff6e9982307c0b35050b9c2c50b19da1a30822c2f19f6bc276b3976",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "Standard"
+    },
+    {
+      "name": "Python source (50 KiB)",
+      "original_file": "original/python_source_50KiB.txt",
+      "original_bytes": 51200,
+      "original_sha256": "c05bbdd0a97dd3ca730312b296710ae1d9fadfff647ea3466e3405e56d204783",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/python_source_50KiB.fl01",
+          "packet_bytes": 44903,
+          "packet_sha256": "0dffc0bac7e2ae8ea8f54e3fedb0e33bb72a976104b6d37455e1b2e52d61951c",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/python_source_50KiB.rl02",
+          "packet_bytes": 75179,
+          "packet_sha256": "31e2b2d99b40eb99cc47784306b9d2fe5be436da9726266a1c86b3a58ca8628a",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/python_source_50KiB.hf03",
+          "packet_bytes": 28417,
+          "packet_sha256": "aae3cfa82cb18e1db23001ef33705777edaba6610c44eb690d6db981dff4896f",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/python_source_50KiB.hc04",
+          "packet_bytes": 28489,
+          "packet_sha256": "80183720a53e2b10b64a6bcbe8978ffc89403afc1077e5f86ad46d533de77fc9",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/python_source_50KiB.lz05",
+          "packet_bytes": 21901,
+          "packet_sha256": "3acfceb9edccd03c0f9f43e5a7aae9eb7e82c5c7c332c8698e7f0de8325f3ae0",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "Standard"
+    },
+    {
+      "name": "Random bytes (10 KB)",
+      "original_file": "original/random_bytes_10KB.bin",
+      "original_bytes": 10000,
+      "original_sha256": "a5b6baa96d1117989584d49e3940fdff862ee464dd796a6b837d8eb44f47109d",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/random_bytes_10KB.fl01",
+          "packet_bytes": 10267,
+          "packet_sha256": "89bb27160f08d40645373ded05f1cc1b24e6ddde0f1c9d0fce463023b7c88509",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/random_bytes_10KB.rl02",
+          "packet_bytes": 18680,
+          "packet_sha256": "0bbdac65ad1666b5087d4b7e82d7a561bca2caf23756510b84a9731c32362aea",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/random_bytes_10KB.hf03",
+          "packet_bytes": 10326,
+          "packet_sha256": "4a581c95e71e373a34524b28a63feb854ace4fee40c7660b0db9985e97b0ea4e",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/random_bytes_10KB.hc04",
+          "packet_bytes": 10520,
+          "packet_sha256": "02b4953a904302c7229a08a5a90686197509a43255c0b9ee5638f706c97fa99e",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/random_bytes_10KB.lz05",
+          "packet_bytes": 14949,
+          "packet_sha256": "8af23c4e6ca230862ab4decb00c330f7aa32293b928b0b6048b92954d348af35",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "Standard"
+    },
+    {
+      "name": "Long runs (50 KB)",
+      "original_file": "original/long_runs_50KB.txt",
+      "original_bytes": 50000,
+      "original_sha256": "ecde581e1d20ed1297f564473193c718f3193855324f774b01225a11dfce1eff",
+      "generation_note": "Generated as 25,000 A bytes followed by 25,000 B bytes.",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/long_runs_50KB.fl01",
+          "packet_bytes": 6263,
+          "packet_sha256": "62647014002ef5a195a95d5b5c8f4baaf5cc82f2643f959a89f67c0c79e56fca",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/long_runs_50KB.rl02",
+          "packet_bytes": 747,
+          "packet_sha256": "1396d93e9845fc8ee9206c00e3e931901539810ba8f6b3cef5fa05168a1da3d6",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/long_runs_50KB.hf03",
+          "packet_bytes": 6261,
+          "packet_sha256": "8b2f6b73acb3ac107517df38841bbd794cbe07081dea43c450c37cbf380eb86b",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/long_runs_50KB.hc04",
+          "packet_bytes": 6264,
+          "packet_sha256": "d4661b3f777778c84707b8fdc43c2875cb1ba78edba22ac2b181c2737b7157d4",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/long_runs_50KB.lz05",
+          "packet_bytes": 603,
+          "packet_sha256": "4e2670141752e8fcc5cf78e205650a35ace924f84e4461d815dbaa70bc5f3c6f",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "5x"
+    },
+    {
+      "name": "Skewed DNA (60 KB)",
+      "original_file": "original/skewed_DNA_60KB.txt",
+      "original_bytes": 60000,
+      "original_sha256": "3b0946dc02152768d2337b4e716f856ae97429ff1bb75fe73be75d50bb61d02e",
+      "generation_note": "First 60,000 bytes of the existing 10x seeded DNA file.",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/skewed_DNA_60KB.fl01",
+          "packet_bytes": 15015,
+          "packet_sha256": "766184a1f3517b848d5de2834310fc93834402cc8921085d85c00c0804270874",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/skewed_DNA_60KB.rl02",
+          "packet_bytes": 54080,
+          "packet_sha256": "95dce9c29e04a992fcffa158f08fe7c0fe71947116bb7230e3cf5072201634ce",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/skewed_DNA_60KB.hf03",
+          "packet_bytes": 11265,
+          "packet_sha256": "83dee34c8ba2642de757267ffea11f8e43a8e42a85b83d076a5d8f49cb922271",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/skewed_DNA_60KB.hc04",
+          "packet_bytes": 11271,
+          "packet_sha256": "0fe2996068b6859631fea1830129129ca91673124710fe323068b4da7824fcb6",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/skewed_DNA_60KB.lz05",
+          "packet_bytes": 21001,
+          "packet_sha256": "a685a0924b421ffde8e2130d491c55320a9273d282462d4ffb6abf8edf2bc7b6",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "5x"
+    },
+    {
+      "name": "Python source (250 KiB)",
+      "original_file": "original/python_source_250KiB.txt",
+      "original_bytes": 256000,
+      "original_sha256": "316b3cffdb9ed778791fc2f12e85d0157c2ab0ee92d78f80b028a3531dd19ad2",
+      "generation_note": "First 256,000 bytes of the existing 10x Python-source file.",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/python_source_250KiB.fl01",
+          "packet_bytes": 224107,
+          "packet_sha256": "6250667b3bfdf5f937f9b34d7b68e5f3cb49e6b8d4011581fa10fe20861422e4",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/python_source_250KiB.rl02",
+          "packet_bytes": 374894,
+          "packet_sha256": "5d63bc32804e60c72f1af35fdaedbb077da4374925531a261bc12d0d0e9eec29",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/python_source_250KiB.hf03",
+          "packet_bytes": 142560,
+          "packet_sha256": "d0848d90e69149530867c155eac24066ef07f8816002ac45292e062669372337",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/python_source_250KiB.hc04",
+          "packet_bytes": 142635,
+          "packet_sha256": "8f8b4a6219e41f94423c1feaa3b50da1ee8878e8e2ba457b057e4af0e5a7a740",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/python_source_250KiB.lz05",
+          "packet_bytes": 88880,
+          "packet_sha256": "1973a2272d0e546ac9244873460e4259d67b71e54a8f38ee5b1d43f1523e6884",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "5x"
+    },
+    {
+      "name": "Random bytes (50 KB)",
+      "original_file": "original/random_bytes_50KB.bin",
+      "original_bytes": 50000,
+      "original_sha256": "7953b14f2641aa2029c4bab350ae8b07ab0dd3032bc003e429f7f2347ab14a9f",
+      "generation_note": "First 50,000 bytes of the existing 10x os.urandom dataset, checksum-pinned.",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/random_bytes_50KB.fl01",
+          "packet_bytes": 50267,
+          "packet_sha256": "be0b16757cb8df81eaf8bc04cc806ed27e14658fa6eca3da564e76cc18235fb6",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/random_bytes_50KB.rl02",
+          "packet_bytes": 93376,
+          "packet_sha256": "45ea02c0878985d47c9f983d028796e4e5ba68225a273b0da790e8282eeead42",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/random_bytes_50KB.hf03",
+          "packet_bytes": 50328,
+          "packet_sha256": "b3507e3bb69d8642dc2ff4387b18641173e06061bfa22402b37282f28b8373cb",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/random_bytes_50KB.hc04",
+          "packet_bytes": 50522,
+          "packet_sha256": "e5240f5a2c52971741d9c8f7869f42990c32772dbd3f818fcc4b9d895a8d3f13",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/random_bytes_50KB.lz05",
+          "packet_bytes": 63836,
+          "packet_sha256": "19729fd764579b19886be2da7d97dc63a66e7f01e8479b3a160cd8e3518611e9",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "5x"
+    },
+    {
+      "name": "Long runs (100 KB)",
+      "original_file": "original/long_runs_100KB.txt",
+      "original_bytes": 100000,
+      "original_sha256": "e739a241332927a8d57c5dd6cfafc10d33f79ffb01236b5a2e440569423868b4",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/long_runs_100KB.fl01",
+          "packet_bytes": 12513,
+          "packet_sha256": "eea520939c838e180f0a38684adfbb500a200fac5624c932055572df1bc66bf0",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/long_runs_100KB.rl02",
+          "packet_bytes": 1486,
+          "packet_sha256": "370a9733c3aa1f5c1ea29a2c666081ab61fdeb3fc762d6db7ec3288672eea772",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/long_runs_100KB.hf03",
+          "packet_bytes": 12511,
+          "packet_sha256": "720e3e2ac0cf3acbbb7e25321671072f69aa6125cc638528a4b8944730878809",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/long_runs_100KB.hc04",
+          "packet_bytes": 12514,
+          "packet_sha256": "6ded2bb6023dd79a5477906d6939924fb4e56bee4fde467e6bae1c9f522bae6c",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/long_runs_100KB.lz05",
+          "packet_bytes": 1171,
+          "packet_sha256": "2ab1458a9038d75b3d7f35a8bd9e03e8b3175661675c5b79f0c203c1d9abdef4",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "10x"
+    },
+    {
+      "name": "Skewed DNA (120 KB)",
+      "original_file": "original/skewed_DNA_120KB.txt",
+      "original_bytes": 120000,
+      "original_sha256": "39048d1e21d91b068eeb127fb660f6943c0cd936c815a7eb986d4a165ff9de57",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/skewed_DNA_120KB.fl01",
+          "packet_bytes": 30015,
+          "packet_sha256": "57b2ca2e0cbee3d3317c46893b784e2a759938dd92d8020fec598b91adfe17e8",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/skewed_DNA_120KB.rl02",
+          "packet_bytes": 108380,
+          "packet_sha256": "08f024b1bcac117189d232de7aeaf62290008d6770c827c0e7c76c7f3fff239d",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/skewed_DNA_120KB.hf03",
+          "packet_bytes": 22540,
+          "packet_sha256": "d0611edfc0279c89cb77763272a16e7d3b83a8337a0917c0f5b9284630485672",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/skewed_DNA_120KB.hc04",
+          "packet_bytes": 22545,
+          "packet_sha256": "7c8ac83027355ac48f04bad3a488a8689e53d2c756d1dc83b7f2347d0a51ccb5",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/skewed_DNA_120KB.lz05",
+          "packet_bytes": 36138,
+          "packet_sha256": "7ea54b78df4a64fffd8f50d45f92b8851bbb3b9668fba27488005873053f6de2",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "10x"
+    },
+    {
+      "name": "Python source (500 KiB)",
+      "original_file": "original/python_source_500KiB.txt",
+      "original_bytes": 512000,
+      "original_sha256": "f5ef1ccb1ff93500a874f97b83c32978cec3c08568ec4b72329b81db2729da68",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/python_source_500KiB.fl01",
+          "packet_bytes": 448107,
+          "packet_sha256": "7a2a2ca0fc97346ffb77478fed9a254a30865e316be777fab52c54c4d03b86c6",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/python_source_500KiB.rl02",
+          "packet_bytes": 754458,
+          "packet_sha256": "9da4fb86c62de1f838927fb45f5588549f941162c329939e98b46be03c1a0c37",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/python_source_500KiB.hf03",
+          "packet_bytes": 288440,
+          "packet_sha256": "5d7468a2117707d4f1bf5c718f168130b3c9a96e3519e526838804418c96727a",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/python_source_500KiB.hc04",
+          "packet_bytes": 288514,
+          "packet_sha256": "f4bd79dfd86e59f8af743796477d5bfde136c33271b630a002fd9180f1d000ca",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/python_source_500KiB.lz05",
+          "packet_bytes": 175025,
+          "packet_sha256": "109c2ec85d7997bcc099343e24e36aa530df21845ab46a7dc7f0144682c528a2",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "10x"
+    },
+    {
+      "name": "Random bytes (100 KB)",
+      "original_file": "original/random_bytes_100KB.bin",
+      "original_bytes": 100000,
+      "original_sha256": "9e5a063398ec0f27c6c00518fd7b04aef7633d6280f5c2edfac6c4876348e6da",
+      "packets": [
+        {
+          "codec_id": "v1_fixed_length",
+          "file": "compressed/v1_fixed_length/random_bytes_100KB.fl01",
+          "packet_bytes": 100267,
+          "packet_sha256": "582002d3b8114f709780a23e5110d68fa0f72de7d54f0539b92ef8944c095d68",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v2_rle",
+          "file": "compressed/v2_rle/random_bytes_100KB.rl02",
+          "packet_bytes": 186779,
+          "packet_sha256": "a3729094ab87821e1a116d4140df6bbcd5ed0141fc8cafead684d400bc4f58e3",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v3_huffman_tree",
+          "file": "compressed/v3_huffman_tree/random_bytes_100KB.hf03",
+          "packet_bytes": 100328,
+          "packet_sha256": "d7484f60fef69f6fd6c9d085d1086132dc3d2fd8c529938cf4f25808345232ee",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v4_huffman_canonical",
+          "file": "compressed/v4_huffman_canonical/random_bytes_100KB.hc04",
+          "packet_bytes": 100522,
+          "packet_sha256": "862e4cc4c4cd6d8f3c8ae71a0078ee88cbb3e3631f60524df623be8b4519fa13",
+          "roundtrip": "PASS"
+        },
+        {
+          "codec_id": "v5_lz77_canonical",
+          "file": "compressed/v5_lz77_canonical/random_bytes_100KB.lz05",
+          "packet_bytes": 123101,
+          "packet_sha256": "99ce9dd46f9db503f938e6da2726fdebf0b23992c9810d757bba59ed4ca657e3",
+          "roundtrip": "PASS"
+        }
+      ],
+      "scale": "10x"
+    }
+  ]
+}
